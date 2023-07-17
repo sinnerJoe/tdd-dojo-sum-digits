@@ -1,6 +1,5 @@
 
-module.exports = {
-  sumDigits: (nr) => {
+const sumDigits = (nr) => {
     if (isNaN(nr)) {
       throw new Error("Not a valid number")
     }
@@ -9,4 +8,18 @@ module.exports = {
     }
     return [...String(nr)].map((digit) => Number(digit)).filter(nr => !isNaN(nr)).reduce((acc, digit) => acc + digit, 0)
   }
+
+const sumDigitsRecursively = (nr) => {
+  const sum = sumDigits(nr)
+
+  if (sum < 10) {
+    return sum
+  }
+
+  return sumDigitsRecursively(sum)
+}
+
+module.exports = {
+  sumDigits,
+  sumDigitsRecursively
 }
